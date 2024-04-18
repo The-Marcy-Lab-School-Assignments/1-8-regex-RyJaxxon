@@ -18,15 +18,18 @@ const isValidEmail = (email) => {
 }
 
 const isValidPhoneNumber = (str) => {
-  const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]+[0-9]{3}[-\s\.]+[0-9]{4}$/;
+  const regex = /^[\+]?[(]?\d{3}[)]?[-\s\.]+\d{3}[-\s\.]+\d{4}$/;
   return regex.test(str)
 };
 
-const matchAllNumbers = (str) => { };
+const matchAllNumbers = (str) => str.match(/\d+/g) || [];
 
-const matchAllNumbersAsNumbers = (str) => { };
+const matchAllNumbersAsNumbers = (str) => {
+  let arr = str.match(/\d+/g) || []
+  return arr.map(Number)
+};
 
-const matchAllWords = (str) => { };
+const matchAllWords = (str) => str.match(/[a-z']+/gi) || [];
 
 const replaceAllNumbers = (str) => { };
 
