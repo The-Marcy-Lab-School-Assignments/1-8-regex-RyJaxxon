@@ -31,13 +31,17 @@ const matchAllNumbersAsNumbers = (str) => {
 
 const matchAllWords = (str) => str.match(/[a-z']+/gi) || [];
 
-const replaceAllNumbers = (str) => { };
+const replaceAllNumbers = (str) => str.replace(/[0-9]+/g, "???");
 
-const fixFileName = (str) => { };
+const fixFileName = (str) => str.replace(/[ \n\t]+/g, "_");
 
-const nameRedacter = (str) => { };
+const nameRedacter = (str) => str.replace(/[A-Z]{2,}/g, "REDACTED");;
 
-const camelToSnakeCase = (str) => { };
+const camelToSnakeCase = (str) => {
+  return str.replace(/[A-Z]/g, match => {
+    return match ? `_${match.toLowerCase()}` : str;
+  });
+};
 
 module.exports = {
   helloWorldRegex,
